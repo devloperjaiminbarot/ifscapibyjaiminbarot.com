@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IFSC Code Lookup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>IFSC Code Lookup</h1>
+    <p class="subtitle">Enter an 11-character IFSC code to fetch bank details.</p>
+
+    <form id="lookup-form" autocomplete="off">
+      <input
+        id="ifsc-input"
+        type="text"
+        maxlength="11"
+        placeholder="e.g. HDFC0000001"
+        required
+        pattern="[A-Za-z]{4}0[A-Za-z0-9]{6}"
+      />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="status" class="status" hidden></div>
+    <div id="result" class="result" hidden></div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
