@@ -2,121 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#2563eb" />
-
-  <title>IFSC Code Lookup — Find Bank Details Instantly</title>
-  <meta name="description" content="Instantly look up any Indian bank IFSC code. Get bank name, branch, address, MICR, and NEFT/RTGS/IMPS/UPI support status. Free, fast, and no signup required." />
-  <meta name="keywords" content="IFSC code, IFSC lookup, bank IFSC, MICR, NEFT, RTGS, IMPS, UPI, India bank" />
-  <meta name="author" content="Jaimin Barot" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="IFSC Code Lookup" />
-  <meta property="og:description" content="Instantly look up any Indian bank IFSC code." />
-  <meta property="og:url" content="https://devloperjaiminbarot.github.io/ifscapibyjaiminbarot.com/" />
-  <meta name="twitter:card" content="summary" />
-
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-  <link rel="canonical" href="https://devloperjaiminbarot.github.io/ifscapibyjaiminbarot.com/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IFSC Code Lookup</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="wrap header-inner">
-      <a class="brand" href="./" aria-label="IFSC Lookup home">
-        <span class="brand-mark" aria-hidden="true">🏦</span>
-        <span class="brand-name">IFSC<span class="accent">Lookup</span></span>
-      </a>
-      <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
-    </div>
-  </header>
+  <main class="container">
+    <h1>IFSC Code Lookup</h1>
+    <p class="subtitle">Enter an 11-character IFSC code to fetch bank details.</p>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Find Any Bank's IFSC Details</h1>
-      <p class="lead">
-        Enter an 11-character IFSC code to get the bank name, branch, address,
-        MICR, and payment-mode support — instantly.
-      </p>
+    <form id="lookup-form" autocomplete="off">
+      <input
+        id="ifsc-input"
+        type="text"
+        maxlength="11"
+        placeholder="e.g. HDFC0000001"
+        required
+        pattern="[A-Za-z]{4}0[A-Za-z0-9]{6}"
+      />
+      <button type="submit">Search</button>
+    </form>
 
-      <form id="lookup-form" class="search" autocomplete="off" novalidate>
-        <label class="sr-only" for="ifsc-input">IFSC code</label>
-        <input
-          id="ifsc-input"
-          name="ifsc"
-          type="text"
-          inputmode="text"
-          maxlength="11"
-          spellcheck="false"
-          autocapitalize="characters"
-          placeholder="e.g. HDFC0000001"
-          required
-          aria-describedby="hint"
-        />
-        <button id="search-btn" type="submit">Search</button>
-      </form>
-
-      <p id="hint" class="hint">
-        Format: <code>ABCD0XXXXXX</code> — 4 letters, a zero, then 6 alphanumerics.
-      </p>
-
-      <div id="recent" class="recent" aria-live="polite"></div>
-    </section>
-
-    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
-
-    <section id="result" class="result card" hidden aria-live="polite"></section>
-
-    <section class="faq">
-      <h2>Frequently Asked Questions</h2>
-
-      <details>
-        <summary>What is an IFSC code?</summary>
-        <p>
-          The Indian Financial System Code (IFSC) is an 11-character alphanumeric
-          code that uniquely identifies every bank branch in India. It's used for
-          NEFT, RTGS, IMPS, and UPI transactions.
-        </p>
-      </details>
-
-      <details>
-        <summary>How is the IFSC code structured?</summary>
-        <p>
-          The first 4 characters identify the bank, the 5th character is always
-          <code>0</code> (reserved for future use), and the last 6 characters
-          identify the specific branch.
-        </p>
-      </details>
-
-      <details>
-        <summary>Where does this data come from?</summary>
-        <p>
-          Data is fetched in real time from the public
-          <a href="https://ifsc.razorpay.com/" target="_blank" rel="noopener noreferrer">Razorpay IFSC API</a>,
-          which mirrors the RBI's official IFSC registry.
-        </p>
-      </details>
-
-      <details>
-        <summary>Is this service free?</summary>
-        <p>Yes — 100% free, no signup, no rate limits on this page.</p>
-      </details>
-    </section>
+    <div id="status" class="status" hidden></div>
+    <div id="result" class="result" hidden></div>
   </main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <p>
-        © <span id="year"></span> IFSC Lookup · Built by
-        <a href="https://github.com/devloperjaiminbarot" target="_blank" rel="noopener noreferrer">Jaimin Barot</a>
-      </p>
-      <p class="muted">
-        Not affiliated with RBI or any bank. Verify details with your bank before transacting.
-      </p>
-    </div>
-  </footer>
-
-  <script src="app.js" defer></script>
+  <script src="app.js"></script>
 </body>
 </html>
